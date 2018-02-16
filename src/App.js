@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
-import './Tile';
+
 
 class App extends Component {
   constructor(){
     super();
       this.state = {
-        currentPlayer: 'x'
+        currentPlayer: 'x',
+       
       }
       this.tileClick = this.tileClick.bind(this);
 
@@ -14,17 +14,20 @@ class App extends Component {
 
 tileClick (e){
   if(this.state.currentPlayer === 'x'){
-    this.setState({currentPlayer: 'o'});
     e.target.innerHTML = 'x'
+    this.setState({currentPlayer: 'o'});
   }else {
     this.setState({currentPlayer: 'x'});
     e.target.innerHTML = 'o'
   }
 }
+resetGame(e){
+  console.log(e.target);
+}
   render() {
     return (
       <div className='container'>
-      <p>TTT</p>
+      <p className='header-font'>Tic Tac Toe</p>
         <div className='row'>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
@@ -40,7 +43,7 @@ tileClick (e){
           <div className='col-md-1 square' onClick={this.tileClick}></div>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
         </div>
-        <button className="btn-danger">poop</button>
+        <button className="btn button" onClick={this.resetGame}>RESET</button>
       </div>
     );
   }
