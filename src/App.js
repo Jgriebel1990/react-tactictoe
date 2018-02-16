@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Tile from './Tile';
 
 
 class App extends Component {
@@ -6,6 +7,36 @@ class App extends Component {
     super();
       this.state = {
         currentPlayer: 'x',
+        tiles: [
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          },
+          {
+            status: 'blank',
+          }
+          
+        ]
        
       }
       this.tileClick = this.tileClick.bind(this);
@@ -25,10 +56,18 @@ resetGame(e){
   console.log(e.target);
 }
   render() {
+    const { tiles } = this.state;
+    const gameBoard = tiles.map((status, index) => <Tile key={index} />)
     return (
       <div className='container'>
-      <p className='header-font'>Tic Tac Toe</p>
-        <div className='row'>
+      <p className='header-font'>
+      Tic Tac Toe
+      
+      </p>
+        <div className="row row-width">
+          { gameBoard }
+        </div>
+        {/* <div className='row'>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
@@ -42,7 +81,7 @@ resetGame(e){
           <div className='col-md-1 square' onClick={this.tileClick}></div>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
           <div className='col-md-1 square' onClick={this.tileClick}></div>
-        </div>
+        </div> */}
         <button className="btn button" onClick={this.resetGame}>RESET</button>
       </div>
     );
