@@ -1,20 +1,41 @@
 import React, { Component } from 'react';
 import './App.css';
+import './Tile';
 
 class App extends Component {
   constructor(){
     super();
       this.state = {
-        box = []
         
       }
+      this.tileClick = this.tileClick.bind(this);
+      
   }
+
+tileClick (e){
+  e.target.innerHTML = 'x';
+  console.log(e.target);
+}
   render() {
     return (
       <div className='container'>
-      <h1>tic tac toad</h1>
-        <div className='box'></div>
-      <button type='reset' className='btn btn-primary'>Reset</button>
+      <p>TTT</p>
+        <div className='row'>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+        </div>
+        <div className='row'>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+        </div>
+        <div className='row'>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+          <div className='col-md-1 square' onClick={this.tileClick}></div>
+        </div>
+        <button className="btn-danger">poop</button>
       </div>
     );
   }
