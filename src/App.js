@@ -44,6 +44,7 @@ class App extends Component {
   }
 
 tileClick (e){
+  console.log('hello world it is i');
   if(this.state.currentPlayer === 'x'){
     e.target.innerHTML = 'x'
     this.setState({currentPlayer: 'o'});
@@ -57,14 +58,15 @@ resetGame(e){
 }
   render() {
     const { tiles } = this.state;
-    const gameBoard = tiles.map((status, index) => <Tile key={index} />)
+    const gameBoard = tiles.map((status, index) => <Tile key={index} 
+                                                         tileSelect={() => this.tileClick(index)}/>)
     return (
       <div className='container'>
       <p className='header-font'>
       Tic Tac Toe
       
       </p>
-        <div className="row row-width">
+        <div className="row">
           { gameBoard }
         </div>
         {/* <div className='row'>
