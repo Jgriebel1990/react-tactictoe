@@ -6,15 +6,20 @@ class App extends Component {
   constructor(){
     super();
       this.state = {
-        
+        currentPlayer: 'x'
       }
       this.tileClick = this.tileClick.bind(this);
-      
+
   }
 
 tileClick (e){
-  e.target.innerHTML = 'x';
-  console.log(e.target);
+  if(this.state.currentPlayer === 'x'){
+    this.setState({currentPlayer: 'o'});
+    e.target.innerHTML = 'x'
+  }else {
+    this.setState({currentPlayer: 'x'});
+    e.target.innerHTML = 'o'
+  }
 }
   render() {
     return (
