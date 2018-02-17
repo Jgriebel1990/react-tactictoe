@@ -74,7 +74,8 @@ class App extends Component {
                                                        status={tile.status}
                                                        />)
     return (
-      <div className='container'>
+      <div className='bg-color'>
+        <div className='container bg-color'>
       <p className='header-font'>
       Tic Tac Toe
       
@@ -98,6 +99,7 @@ class App extends Component {
           <div className='col-md-1 square' onClick={this.tileClick}></div>
         </div> */}
         <button className="btn button" onClick={this.resetGame}>RESET</button>
+        </div>
       </div>
     );
   }
