@@ -9,57 +9,70 @@ class App extends Component {
         currentPlayer: 'x',
         tiles: [
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           },
           {
-            status: 'blank',
+            status: '',
           }
           
         ]
        
       }
-      this.tileClick = this.tileClick.bind(this);
+      this.tileSelect = this.tileSelect.bind(this);
 
   }
 
-tileClick (e){
-  console.log('hello world it is i');
-  if(this.state.currentPlayer === 'x'){
-    e.target.innerHTML = 'x'
-    this.setState({currentPlayer: 'o'});
-  }else {
-    this.setState({currentPlayer: 'x'});
-    e.target.innerHTML = 'o'
+  tileSelect (position){
+    console.log('please work');
+    const clickedTile = this.state.tiles[position];
+    const first = this.state.tiles.slice(0, position);
+    const last = this.state.tiles.slice(position + 1);
+    const newTiles = [
+      ...first,
+      {...clickedTile, status: this.state.currentPlayer},
+      ...last
+    ];
+    this.setState({tiles: newTiles, currentPlayer: this.state.currentPlayer === 'x' ? 'o' : 'x'  });
+    
+//   console.log('hello world it is i');
+    // if(this.state.currentPlayer === 'x'){
+    //   e.target.innerHTML = 'x'
+    //   this.setState({currentPlayer: 'o'});
+    // }else {
+    //   this.setState({currentPlayer: 'x'});
+    //   e.target.innerHTML = 'o'
+    // }
   }
-}
-resetGame(e){
-  console.log(e.target);
-}
+  resetGame(e){
+    console.log(e.target);
+  }
   render() {
     const { tiles } = this.state;
-    const gameBoard = tiles.map((status, index) => <Tile key={index} 
-                                                         tileSelect={() => this.tileClick(index)}/>)
+    const gameBoard = tiles.map((tile, index) => <Tile key={index} 
+                                                       tileClick={() => this.tileSelect(index)}
+                                                       status={tile.status}
+                                                       />)
     return (
       <div className='container'>
       <p className='header-font'>
